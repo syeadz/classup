@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/syeadz/classup/internal/cli"
-	"github.com/syeadz/classup/internal/database/courses"
+	"github.com/syeadz/classup/internal/database/coursedb"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	if len(args) > 0 {
 		cli.Picker(args)
 	} else {
-		courses.PrintAllCourses()
+		coursedb.PrintAllCourses()
 	}
 
 }
