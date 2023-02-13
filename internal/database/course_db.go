@@ -1,14 +1,12 @@
-package coursedb
+package database
 
 import (
 	"fmt"
 	"log"
-
-	"github.com/syeadz/classup/internal/database"
 )
 
 func PrintAllCourses() {
-	db := database.GetDb()
+	db := GetDb()
 
 	defer db.Close()
 

@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/syeadz/classup/internal/cli"
-	"github.com/syeadz/classup/internal/database/coursedb"
+	coursedb "github.com/syeadz/classup/internal/database"
 )
 
 func main() {
