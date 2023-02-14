@@ -5,7 +5,7 @@ import (
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/syeadz/classup/internal/settings"
+	settings "github.com/syeadz/classup/configs"
 )
 
 func GetDb() *sql.DB {
