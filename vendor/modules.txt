@@ -3,9 +3,13 @@
 github.com/asdine/storm/v3
 github.com/asdine/storm/v3/codec
 github.com/asdine/storm/v3/codec/json
+github.com/asdine/storm/v3/codec/protobuf
 github.com/asdine/storm/v3/index
 github.com/asdine/storm/v3/internal
 github.com/asdine/storm/v3/q
+# github.com/golang/protobuf v1.3.2
+## explicit
+github.com/golang/protobuf/proto
 # github.com/pelletier/go-toml/v2 v2.0.6
 ## explicit; go 1.16
 github.com/pelletier/go-toml/v2
