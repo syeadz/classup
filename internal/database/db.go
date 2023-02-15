@@ -4,15 +4,16 @@ import (
 	"log"
 	"os"
 
-	bolt "go.etcd.io/bbolt"
+	"github.com/asdine/storm/v3"
+	"github.com/asdine/storm/v3/codec/protobuf"
 )
 
-func Test() *bolt.DB {
-	db, err := bolt.Open(os.Getenv("HOME")+"/.classup/test.db", 0666, nil)
+func Test() {
+	db, err := storm.Open(os.Getenv("HOME")+"/.classup/test.db", storm.Codec(protobuf.Codec))
 
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
-	return db
+	defer db.Close()
 }
