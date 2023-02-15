@@ -13,7 +13,6 @@ type Config struct {
 
 func GetConfig() Config {
 	tomlPath := os.Getenv("HOME") + "/.config/classup/config.toml"
-
 	dat, err := os.ReadFile(tomlPath)
 
 	if err != nil {
