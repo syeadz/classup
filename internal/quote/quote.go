@@ -11,22 +11,22 @@ import (
 type Quote struct {
 	quote  string
 	author string
-	genre  string
 }
 
 func GetQuote() Quote {
-	quotesFile, err := os.Open("/etc/classup/quotes.csv")
+	quotesFile, err := os.Open(os.Getenv("HOME") + "/.classup/quotes.csv")
 
 	if err != nil {
+		fmt.Println(err)
 		log.Fatalln("Coudln't open quotes file. Maybe deleted?")
 	}
 
 	defer quotesFile.Close()
 
 	r := csv.NewReader(quotesFile)
-	r.Comma = ';'
 
-	rand := rand.Intn(75967)
+	// get random number between 1 and 1664
+	rand := rand.Intn(1663) + 1
 	for i := 0; i < rand; i++ {
 		_, err = r.Read()
 
@@ -41,10 +41,10 @@ func GetQuote() Quote {
 		log.Fatalln("Error reading quotes.csv")
 	}
 
-	quote := Quote{quoteCSV[0], quoteCSV[1], quoteCSV[2]}
+	quote := Quote{quoteCSV[1], quoteCSV[0]}
 	return quote
 }
 
 func (q Quote) String() string {
-	return fmt.Sprintf("%s\n\t- %s (%s)", q.quote, q.author, q.genre)
+	return fmt.Sprintf("%s\n\t- %s", q.quote, q.author)
 }
