@@ -13,6 +13,10 @@ type Quote struct {
 	author string
 }
 
+func (q Quote) String() string {
+	return fmt.Sprintf("%s\n\t- %s", q.quote, q.author)
+}
+
 func GetQuote() Quote {
 	quotesFile, err := os.Open(os.Getenv("HOME") + "/.classup/quotes.csv")
 
@@ -45,6 +49,6 @@ func GetQuote() Quote {
 	return quote
 }
 
-func (q Quote) String() string {
-	return fmt.Sprintf("%s\n\t- %s", q.quote, q.author)
+func PrintQuote() {
+	fmt.Println(GetQuote().String())
 }
