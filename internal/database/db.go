@@ -1,18 +1,17 @@
 package database
 
 import (
-	"database/sql"
 	"log"
+	"os"
 
-	_ "github.com/mattn/go-sqlite3"
-	settings "github.com/syeadz/classup/configs"
+	bolt "go.etcd.io/bbolt"
 )
 
-func GetDb() *sql.DB {
-	db, err := sql.Open("sqlite3", settings.GetConfig().DbPath)
+func Test() *bolt.DB {
+	db, err := bolt.Open(os.Getenv("HOME")+"/.classup/test.db", 0666, nil)
 
 	if err != nil {
-		log.Fatalln("Couldn't open")
+		log.Println(err)
 	}
 
 	return db
