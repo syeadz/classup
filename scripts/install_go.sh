@@ -8,7 +8,6 @@ if [ -x "$(command -v go)" ]; then
   exit
 fi
 
-/usr/local/go/bin
 if [ -f "/usr/local/go/bin" ]; then
     echo $EXPORT
 else
