@@ -1,5 +1,5 @@
 /*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
+Copyright © 2023 Syed Yead Zaman s.yead.zaman@gmail.com
 */
 package cmd
 
@@ -16,8 +16,8 @@ import (
 var quoteCmd = &cobra.Command{
 	Use:   "quote",
 	Short: "Displays a motivational quote",
-	Long: `quote displays a random motivational quote from a quotes.csv 
-	file containing 1663 different quotes along with their authors.`,
+	Long: `'quote' displays a random motivational quote from a quotes.csv 
+file containing 1663 different quotes along with their authors.`,
 
 	RunE: func(cmd *cobra.Command, args []string) error {
 		quote, err := quote.GetQuote()
