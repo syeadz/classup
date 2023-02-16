@@ -13,7 +13,7 @@ type Quote struct {
 }
 
 func (q Quote) String() string {
-	return fmt.Sprintf("%s\n\t- %s", q.quote, q.author)
+	return fmt.Sprintf("%s\n    - %s", q.quote, q.author)
 }
 
 func GetQuote() (*Quote, error) {
