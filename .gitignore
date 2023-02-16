@@ -16,6 +16,8 @@
 
 # Random testing directory
 testing/
+# Test command
+cmd/test.go
 
 # Shortcut directory
 shortcuts/
