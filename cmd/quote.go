@@ -4,6 +4,10 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"errors"
+	"fmt"
+	"os"
+
 	"github.com/spf13/cobra"
 	"github.com/syeadz/classup/internal/quote"
 )
@@ -15,8 +19,19 @@ var quoteCmd = &cobra.Command{
 	Long: `quote displays a random motivational quote from a quotes.csv 
 	file containing 1663 different quotes along with their authors.`,
 
-	Run: func(cmd *cobra.Command, args []string) {
-		quote.PrintQuote()
+	RunE: func(cmd *cobra.Command, args []string) error {
+		quote, err := quote.GetQuote()
+
+		if errors.Is(err, os.ErrNotExist) {
+			fmt.Println("quotes.csv doesn't exist. Is it downloaded?")
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+
+		fmt.Println(quote.String())
+		return nil
 	},
 }
 

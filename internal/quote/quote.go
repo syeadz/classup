@@ -3,7 +3,6 @@ package quote
 import (
 	"encoding/csv"
 	"fmt"
-	"log"
 	"math/rand"
 	"os"
 )
@@ -17,12 +16,11 @@ func (q Quote) String() string {
 	return fmt.Sprintf("%s\n\t- %s", q.quote, q.author)
 }
 
-func GetQuote() Quote {
+func GetQuote() (*Quote, error) {
 	quotesFile, err := os.Open(os.Getenv("HOME") + "/.classup/quotes.csv")
 
 	if err != nil {
-		fmt.Println(err)
-		log.Fatalln("Coudln't open quotes file. Maybe deleted?")
+		return nil, err
 	}
 
 	defer quotesFile.Close()
@@ -35,20 +33,16 @@ func GetQuote() Quote {
 		_, err = r.Read()
 
 		if err != nil {
-			log.Fatalln("Error reading quotes.csv")
+			return nil, err
 		}
 	}
 
 	quoteCSV, err := r.Read()
 
 	if err != nil {
-		log.Fatalln("Error reading quotes.csv")
+		return nil, err
 	}
 
 	quote := Quote{quoteCSV[1], quoteCSV[0]}
-	return quote
-}
-
-func PrintQuote() {
-	fmt.Println(GetQuote().String())
+	return &quote, nil
 }
