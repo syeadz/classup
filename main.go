@@ -4,7 +4,7 @@ Copyright © 2023 Syed Yead Zaman s.yead.zaman@gmail.com
 package main
 
 import (
-	"log"
+	"os"
 
 	"github.com/syeadz/classup/cmd"
 )
@@ -13,6 +13,6 @@ func main() {
 	err := cmd.Execute()
 
 	if err != nil {
-		log.Fatal(err)
+		os.Exit(-1)
 	}
 }
